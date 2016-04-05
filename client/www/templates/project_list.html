@@ -1,0 +1,25 @@
+ <ion-header-bar class="bar-positive">
+    <p ng-click="profileUser()"> USER: Worakrit </p>
+ 	<h1 class="title">Project List</h1>
+ 	<button class="button icon-left ion-plus" ng-click="addProject()">Add</button>
+</ion-header-bar>
+
+<ion-content>
+<ion-list>
+  <ion-item ng-repeat="project in projectlist">
+  <div></div>
+
+<div class="list" >
+	<div class="item item-divider balanced" >
+		<div ng-click=goHome(project.projectname) >{{project.projectname}}</div>
+	</div>
+	<div class="item item-text-wrap  item-avatar">
+      <img src="img/wor.png">
+      <h2>Worakrit </h2>   
+		 <span style="color:red">Doing</span>: {{project.Doing.task}} (Estimate: {{project.Doing.estimate}} Days)<br>
+		 <span style="color:blue">Next Todo </span>: {{project.Todo.task}} (Estimate: {{project.Todo.estimate}} Days)
+</div>   
+</ion-content>
+  </ion-item>
+</ion-list>
+

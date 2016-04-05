@@ -1,0 +1,41 @@
+ <ion-header-bar>
+ 	<button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
+ 	<h1 class="title">Backlog</h1>
+ 	<button class="button button-clear icon ion-more" ng-click="more()"></button>
+</ion-header-bar>
+
+
+<ion-content>
+<div class="button-bar">
+  <a class="button button-outline button-royal" ng-click="showH()" ng-class="{'active':prioritystate==1}">High</a>
+  <a class="button button-outline button-calm" ng-click="showM()" ng-class="{'active':prioritystate==2}">Medium</a>
+  <a class="button button-outline button-balanced" ng-click="showL()" ng-class="{'active':prioritystate==3}">Low</a>
+</div>
+
+
+
+ <ion-list 
+          can-swipe="listCanSwipe">
+  <ion-item ng-repeat="task in tasks" ng-if="priority==task.priority"
+            class="card item item-avatar" ng-click="openTask(task)" high="10px">
+	<img ng-src="/img/wor.png">
+     
+    <div class="row row-top ">
+      <div class="col col-75"><h2 class={{task.state}}>{{task.tasktitle}}</h2></div>
+      <div class="col"><h2 class={{task.state}}>{{task.state}}</div>
+    </div>
+
+    <div class="row">
+       <div class="col col-50"><p><b>{{task.priority}}</b></p></div>
+       <div class="col"></div>
+    <div class="col"><p>{{task.estimate}} Days</p></div>
+    </div>  
+    <ion-option-button class="buntton-minus-circled"
+                       ng-click="tasks.splice($index, 1)">
+      Delete
+    </ion-option-button>
+  </ion-item>
+</ion-list>
+</ion-item>
+</ion-list>
+</ion-content>
