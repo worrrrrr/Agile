@@ -5,13 +5,14 @@
     </h1>
  	<button class="button button-clear icon ion-more" ng-click="more()"></button>
 </ion-header-bar>
-
-<ion-content>
+<ion-header-bar class="bar-subheader">
 <div class="button-bar">
-	<a class="button button-outline button-royal" ng-click="showTodo()" ng-class="{'active':taskState==1}">Todo</a>
-	<a class="button button-outline button-calm" ng-click="showDoing()" ng-class="{'active':taskState==2}">Doing</a>
-	<a class="button button-outline button-balanced" ng-click="showDone()" ng-class="{'active':taskState==3}">Done</a>
+  <a class="button button-outline button-royal" ng-click="showTodo()" ng-class="{'active':taskState==1}">Todo</a>
+  <a class="button button-outline button-calm" ng-click="showDoing()" ng-class="{'active':taskState==2}">Doing</a>
+  <a class="button button-outline button-balanced" ng-click="showDone()" ng-class="{'active':taskState==3}">Done</a>
 </div>
+</ion-header-bar>
+<ion-content>
 
 <!-- <ion-list 
 can-swipe="listCanSwipe" >

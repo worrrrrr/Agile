@@ -3,15 +3,16 @@
  	<h1 class="title">Backlog</h1>
  	<button class="button button-clear icon ion-more" ng-click="more()"></button>
 </ion-header-bar>
-
-
-<ion-content>
+<ion-header-bar class="bar-subheader">
 <div class="button-bar">
   <a class="button button-outline button-royal" ng-click="showH()" ng-class="{'active':prioritystate==1}">High</a>
   <a class="button button-outline button-calm" ng-click="showM()" ng-class="{'active':prioritystate==2}">Medium</a>
   <a class="button button-outline button-balanced" ng-click="showL()" ng-class="{'active':prioritystate==3}">Low</a>
 </div>
+</ion-header-bar>
 
+
+<ion-content>
 
 
  <ion-list 
