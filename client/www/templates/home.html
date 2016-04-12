@@ -1,36 +1,32 @@
- <ion-header-bar>
- <button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
+
+<ion-view view-title="Home">
+<!-- <ion-header-bar>
+<button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
  <h1 class="title">Home</h1>
  <button class="button button-clear icon ion-more" ng-click="more()"></button>
-</ion-header-bar>
- <ion-header-bar class="bar-subheader bar-positive">
-        <h1 class="title">Project: {{currentProject}}</h1>
-      </ion-header-bar>
-<ion-content>
-<!-- <div class="list " height="50px">
+      </ion-header-bar> -->
 
-	<div class="item item-divider" ng-click="openTask(task)" high="10px">
-		<div ng-style=tasks[0].style>
-			<div class="row ">
-				<div class="col col-50" > {{tasks[0].tasktitle}}</div> 
-				<div class="col">{{tasks[0].state}}</div>
-				<div class="col">{{tasks[0].estimate}} Days</div>
-			</div>	
-		</div>
-		<div class="item item-text-wrap item item-avatar">
-	
-      <img src="/img/wor.png">
-      <h2>{{users.name}}</h2>
-      <p >Team 1. </p>	
-  </div>
-	</div>
-	
-</div> --> 
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-more" ng-click="more()"></button>
+</ion-nav-buttons>
+  
+<ion-header-bar class="bar-subheader bar-positive">
+        <h1 class="title">Project: {{currentProject}}</h1>
+  </ion-header-bar> 
+
+<ion-content has-header="true" padding="true">
+
  <ion-list 
           can-swipe="listCanSwipe">
   <ion-item ng-repeat="task in tasks" ng-if="task.flag==1||task.state=='Doing'"
-           class="card" ng-click="openTask(task)" high="10px">
-    <h2 class={{task.state}}>{{task.tasktitle}} :{{task.state}}</h2>
+           class="card {{task.state}} item" ng-click="openTask(task)" high="10px">
+    <div class="row row-top ">
+      <div class="col col-75">{{task.tasktitle}}</h2></div>
+      <div class="col">{{task.state}}</div>
+    </div>
     <div class="row">
        <div class="col col-50"><p><b>{{task.priority}}</b></p></div>
       <div class="col"></div>
@@ -48,10 +44,11 @@
             Pie chart
         </div>
         <div class="item item-text-wrap">
-           <!--  <canvas id="myPiechart" class="chart chart-pie" chart-data="data" chart-labels="labels" char-color="colors" hart-options="chartoptions"></canvas>  -->
+           
             <canvas ng-jq id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels"  chart-legend="true" chart-options="options" ></canvas> 
         </div>
     </div>
 
 </ion-content>
 </ion-view>
+ 

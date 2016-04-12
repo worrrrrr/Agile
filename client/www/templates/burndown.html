@@ -1,12 +1,28 @@
 <ion-view view-title="Burndown">
- <ion-header-bar>
+ <!-- <ion-header-bar>
   <button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
   <h1 class="title">Burndown</h1>
   <button class="button button-clear icon ion-more" ng-click="more()"></button>
-  </ion-header-bar>
+  </ion-header-bar> -->
+  <ion-nav-buttons side="left">
+  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-more" ng-click="more()"></button>
+</ion-nav-buttons>
   <ion-content>
 
 
+
+<div class="card">
+        <div class="item item-divider">
+            Burndown 
+        </div>
+        <div class="item item-text-wrap">
+           
+           <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" options="options" chart-legend="true" chart-series="series"  chart-click="onClick" ></canvas> 
+      </div>
+</div>
  </div> 
 <p>Activity</p>
 	<div class="item item-avatar">

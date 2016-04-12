@@ -5,7 +5,7 @@ var exec = require('child_process').exec;
 
 
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', ['browser-sync','startServer'], function () {
 });
 
 gulp.task('browser-sync', ['nodemon'], function() {
@@ -27,4 +27,10 @@ gulp.task('nodemon', function (cb) {
     } 
   });
 });
+
+
+gulp.task('startServer', function() {
+  
+});
+
 

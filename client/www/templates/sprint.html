@@ -1,10 +1,18 @@
- <ion-header-bar>
+    <ion-view view-title="Sprint">
+  <!-- <ion-header-bar>
  	<button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
     <h1 class="title" ng-click="chooseSprint()">
       Sprint {{sprint}} ▼
     </h1>
  	<button class="button button-clear icon ion-more" ng-click="more()"></button>
-</ion-header-bar>
+</ion-header-bar> -->
+ 
+  <ion-nav-buttons side="left">
+  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-more" ng-click="more()"></button>
+</ion-nav-buttons>
 <ion-header-bar class="bar-subheader">
 <div class="button-bar">
   <a class="button button-outline button-royal" ng-click="showTodo()" ng-class="{'active':taskState==1}">Todo</a>
@@ -41,12 +49,12 @@ can-swipe="listCanSwipe" >
 <ion-list 
           can-swipe="listCanSwipe">
   <ion-item ng-repeat="task in tasks | filter:{sprint:sprint}" ng-if="state==task.state"
-            class="card item item-avatar" ng-click="openTask(task)" high="10px">
-  <img ng-src="img/wor.png">
-   
+            class="card item {{task.state}}" ng-click="openTask(task)" high="10px">
+  <div class="item-avatar">
+    <img ng-src="img/wor.png"> 
      <div class="row">
-       <div class="col col-75"> <h2 class={{task.state}}>{{task.tasktitle}} </p></div>
-      <div class="col {{task.state}}">{{task.state}} </h2></div>
+       <div class="col col-75"> {{task.tasktitle}} </p></div>
+      <div class="col ">{{task.state}} </h2></div>
    
     </div> 
     <div class="row">
@@ -54,10 +62,12 @@ can-swipe="listCanSwipe" >
       <div class="col"></div>
     <div class="col"><p>{{task.estimate}} Days</p></div>
     </div>  
+ </div>
     <ion-option-button class="buntton-minus-circled"
                        ng-click="tasks.splice($index, 1)">
       Delete
     </ion-option-button>
+
   </ion-item>
 </ion-list>
 </ion-content>

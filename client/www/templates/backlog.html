@@ -1,8 +1,17 @@
- <ion-header-bar>
+<ion-view view-title="Product Backlog">
+ <!-- <ion-header-bar>
  	<button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
- 	<h1 class="title">Backlog</h1>
+ 	<h1 class="title">Product Backlog</h1>
  	<button class="button button-clear icon ion-more" ng-click="more()"></button>
-</ion-header-bar>
+</ion-header-bar> -->
+
+  <ion-nav-buttons side="left">
+  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-more" ng-click="more()"></button>
+</ion-nav-buttons>
+
 <ion-header-bar class="bar-subheader">
 <div class="button-bar">
   <a class="button button-outline button-royal" ng-click="showH()" ng-class="{'active':prioritystate==1}">High</a>
@@ -13,17 +22,13 @@
 
 
 <ion-content>
-
-
- <ion-list 
-          can-swipe="listCanSwipe">
-  <ion-item ng-repeat="task in tasks" ng-if="priority==task.priority"
-            class="card item item-avatar" ng-click="openTask(task)" high="10px">
-	<img ng-src="/img/wor.png">
-     
-    <div class="row row-top ">
-      <div class="col col-75"><h2 class={{task.state}}>{{task.tasktitle}}</h2></div>
-      <div class="col"><h2 class={{task.state}}>{{task.state}}</div>
+ <ion-list  can-swipe="listCanSwipe">
+  <ion-item ng-repeat="task in tasks" ng-if="priority==task.priority" class="card item {{task.state}}" ng-click="openTask(task)" high="10px">
+	  <div class="item-avatar">
+    <img ng-src="/img/wor.png">
+    <div class="row row-top " >
+      <div class="col col-75">{{task.tasktitle}}</h2></div>
+      <div class="col">{{task.state}}</div>
     </div>
 
     <div class="row">
@@ -35,7 +40,9 @@
                        ng-click="tasks.splice($index, 1)">
       Delete
     </ion-option-button>
+   </div>
   </ion-item>
+
 </ion-list>
 </ion-item>
 </ion-list>

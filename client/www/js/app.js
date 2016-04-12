@@ -51,6 +51,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ch
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
+
+   .state('app.projectlist', {
+    url: "/project_list",
+    cache: false,
+    templateUrl: "templates/project_list.html",
+    controller:"ProjectCtrl"
+    }
+  )
+
+   
    .state('app.home', {
     url: "/home",
     cache: false,
@@ -58,18 +68,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ch
       'home-tab': {
         controller: "HomeCtrl",
        templateUrl: "templates/home.html"
-        
       }
+    },
+    params: {
+    user: null,
+    currentproject: null
     }
+
   })
 
-  .state('project_list', {
-    url: "/project_list",
-    cache: false,
-    templateUrl: "templates/project_list.html",
-    controller:"Project_listCtrl"
-    }
-  )
+ 
 
   .state('app.backlog', {
     url: "/backlog",

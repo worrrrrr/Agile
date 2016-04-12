@@ -29,6 +29,7 @@ app.all('/*', function (req, res, next) {
     next();
 });
 
+
 app.get('/', function (req, res) {
     res.send('<h1>Hello Node.js</h1> lolsda');
 });
@@ -51,11 +52,15 @@ app.post('/api/newuser', function (req, res) {
 //-------------------------------task  API --------------------------------//
 
 app.get('/api/tasks', function (req, res) {
+    //console.log(req.params);
     res.json(tasks.findAll());
 });
+
+
  
 app.get('/api/tasks/:id', function (req, res) {
     var id = req.params.id;
+    
     res.json(tasks.findById(id));
 });
  

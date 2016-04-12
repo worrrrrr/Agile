@@ -1,4 +1,15 @@
-/* Empty. Add your own CSS if you like */
-.Todo { color: blue }
-.Doing { color: red }
-.Done { color: green }
+.Todo{
+	/*border-color: #F6CED8 !important;*/
+	background-color: #F2E0F7 !important; 	
+
+}
+.Doing{
+	/*border-color: #CECEF6 !important;*/
+	background-color: #CEF6F5 !important;
+	
+}
+.Done{	
+	background-color: #BCF5A9 !important;
+}
+
+	

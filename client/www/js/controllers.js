@@ -1,7 +1,16 @@
 angular.module('starter.controllers', ['ionic','chart.js'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$http, $ionicSideMenuDelegate) {
   // Form data for the login modal
+  console.log("AppCtrl");
+  
+
+  $scope.toggleLeft = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+    };
+  
+
+
   $scope.loginData = {};
 
   // Create the login modal that we will use later
@@ -14,7 +23,7 @@ angular.module('starter.controllers', ['ionic','chart.js'])
 
   $scope.getUsers = function() {
     $http.get('http://localhost:8000/api/users').success(function(data) {
-      console.log(data)
+      //console.log(data)
       $scope.users = data;
     });
   };
@@ -54,12 +63,17 @@ angular.module('starter.controllers', ['ionic','chart.js'])
 
 
 
-.controller('HomeCtrl', function($scope, $ionicModal,$ionicActionSheet, $location, $timeout,$http, $rootScope, _) {
-
+.controller('HomeCtrl', function($scope,$state,$stateParams, $ionicModal,$ionicActionSheet, $location, $timeout,$http, $rootScope, _,$ionicSideMenuDelegate) {
+  console.log($rootScope.currentProject)
   console.log("HomeCtrl")
-  getTasks();
-  
-  $scope.options = {
+ getTasks();
+  //testGettask();
+   $scope.toggleLeft = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+   };
+
+   $scope.wor=1;
+/*  $scope.options = {
     tooltipEvents: [],
     showTooltips: false,
     tooltipCaretSize: 0,
@@ -67,33 +81,29 @@ angular.module('starter.controllers', ['ionic','chart.js'])
         this.showTooltip(this.segments, true);
     },
   };
-
+*/
   
  // $scope.labels = ["Todo", "Doing", "Done"];
  // $scope.data = [4, 3, 1];
 
  
-  
+  function testGettask() {
+
+  }
 
   function getTasks(){
-  $http.get('http://localhost:8000/api/tasks').success(function(data){
+  $http.get('http://localhost:8000/api/tasks',{data:$scope.wor}).success(function(data){
     $scope.tasks=data;
-    console.log($scope.tasks) ;
-    console.log(_.countBy($scope.tasks,'state'));
-
+     //console.log(_.countBy($scope.tasks,'state'));
     //console.log(_.groupBy($scope.datas.keys,_.countBy($scope.tasks,'state')));
      var temp=_.countBy($scope.tasks,'state');
-    console.log(_.defaults(temp, {Todo: 0, Doing: 0,Done:0 }));
+    //console.log(_.defaults(temp, {Todo: 0, Doing: 0,Done:0 }));
     $scope.datas=temp;
-    console.log($scope.datas);
+   // console.log($scope.datas);
     $scope.data =_.values($scope.datas);
     $scope.labels=_.keys($scope.datas);
-    console.log($scope.labels,$scope.data)
-
-   
-
-  
-  
+    //console.log($scope.labels,$scope.data)
+ 
     })
   };
 
@@ -197,7 +207,7 @@ angular.module('starter.controllers', ['ionic','chart.js'])
   })
   $http.get('http://localhost:8000/api/tasks').success(function(data){
         $scope.tasks=data;
-       console.log(data)
+       //console.log(data)
   })
 
 
@@ -471,6 +481,7 @@ angular.module('starter.controllers', ['ionic','chart.js'])
     //$scope.closeAddTask();
   }
 
+
   $scope
 
 })
@@ -514,6 +525,19 @@ angular.module('starter.controllers', ['ionic','chart.js'])
    }, 20000);
 
   };
+  
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [31, 30, 29, 28, 27, 26, 25],
+    [31, 29, 29, 27, 26,24, 20]
+  ];
+  $scope.options={bezierCurve : false}
+
+
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
 
 })
 
@@ -524,11 +548,11 @@ angular.module('starter.controllers', ['ionic','chart.js'])
     $scope.data = {};
 
    $scope.login = function() {
-      $location.path('/project_list');
-      console.log("goProjectList");
+      $state.go('app.projectlist');
+      //console.log("goProjectList");
        console.log("LOGIN user: " + $scope.data.username + " - PW: " + $scope.data.password);
         LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            $state.go('tab.dash');
+            $state.go('app.projectlist');
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -539,7 +563,7 @@ angular.module('starter.controllers', ['ionic','chart.js'])
 })
 
 
-.controller('Project_listCtrl', function($scope, $ionicModal,$location, $timeout,$http,$rootScope) {
+.controller('ProjectCtrl', function($scope, $ionicModal,$location,$state, $timeout,$http,$rootScope) {
   console.log("USE Project_listCtrl")
 
 
@@ -583,11 +607,11 @@ angular.module('starter.controllers', ['ionic','chart.js'])
  };
  $scope.getProjectlist();
 
-
- $scope.goHome=function(projectname){
-  $rootScope.currentProject=projectname;
+ $scope.setProject=function(project){
+  $rootScope.currentProject=project.projectname;
   console.log($rootScope.currentProject);
-  $location.path('/app/home');
+  //$state.go('app.home');
+  //$location.path('/app/home');
   }
 })
 
