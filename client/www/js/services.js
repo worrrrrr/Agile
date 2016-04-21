@@ -5,7 +5,7 @@ angular.module('starter.services', [])
         loginUser: function(name, pw) {
             var deferred = $q.defer();
             var promise = deferred.promise;
- 
+
             if (name == 'wor' && pw == 'wor') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
@@ -23,3 +23,18 @@ angular.module('starter.services', [])
         }
     }
 })
+
+.factory('myService', function($http) {
+    return {
+        searchTask: function(keyword) {
+            $http.get('http://localhost:8000/api/searchTask/', {
+              params:{ 
+                data: keyword
+            }
+        })
+            .success(function (data, status, headers, config) {
+                console.log(data)
+            })
+        }
+    };           
+});

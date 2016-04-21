@@ -7,7 +7,9 @@
 angular.module('starter', ['ionic', 'starter.controllers','starter.services','chart.js','underscore'])
 
 
-.run(function($ionicPlatform,$httpBackend) {
+.run(function($ionicPlatform,$httpBackend,$rootScope,myService) {
+  $rootScope.services=myService;
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,10 +22,6 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ch
       StatusBar.styleDefault();
     }
   });
-
-
-
-
 })
 
   // Optional configuration
@@ -40,6 +38,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ch
     });
  
   }])
+
 
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
@@ -70,9 +69,9 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ch
        templateUrl: "templates/home.html"
       }
     },
-    params: {
-    user: null,
-    currentproject: null
+    params:{
+        user:null,
+        currentProject:null
     }
 
   })

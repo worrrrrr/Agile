@@ -1,3 +1,4 @@
+var _ = require('underscore') 
 
 var tasks=[
 { "id":1,
@@ -94,8 +95,9 @@ exports.findById = function (id) {
 };
 
 
-exports.findByUserID = function (uid) {
-    for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].uid == id) return tasks[i];
-    }
+
+exports.wherePid = function (id) {
+  var i=id
+    return _.where(tasks,{pid:"i"});
 };
+

@@ -1,4 +1,4 @@
-<ion-view view-title="Product Backlog">
+<ion-view view-title="{{currentProject.projectname}} Product Backlog">
  <!-- <ion-header-bar>
  	<button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
  	<h1 class="title">Product Backlog</h1>
@@ -11,7 +11,6 @@
     <ion-nav-buttons side="right">
     <button class="button button-clear icon ion-more" ng-click="more()"></button>
 </ion-nav-buttons>
-
 <ion-header-bar class="bar-subheader">
 <div class="button-bar">
   <a class="button button-outline button-royal" ng-click="showH()" ng-class="{'active':prioritystate==1}">High</a>

@@ -1,4 +1,4 @@
-<ion-view view-title="Burndown">
+<ion-view view-title="{{currentProject.projectname}} Burndown">
  <!-- <ion-header-bar>
   <button class="button button-clear icon ion-navicon" ng-click="goProjectlist()"></button>
   <h1 class="title">Burndown</h1>
@@ -20,15 +20,11 @@
         </div>
         <div class="item item-text-wrap">
            
-           <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" options="options" chart-legend="true" chart-series="series"  chart-click="onClick" ></canvas> 
+           <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" options="options"  chart-series="series" ></canvas> 
+           
       </div>
 </div>
  </div> 
-<p>Activity</p>
-	<div class="item item-avatar">
-      <img src="/img/wor.png">
-      <p><span style="color:blue">{{users.name}}</span> complete Task 3</p>	
-     
-  </div>
+
   </ion-content>
 </ion-view>

@@ -1,23 +1,26 @@
 <ion-modal-view ng-controller="TaskCtrl">
   <ion-header-bar>
-
-    <h1 class="title"><div ng-style=modal.task.style>{{modal.task.name}}</div> </h1>
+    <h1 class="title {{taskModel.state}}">{{taskModal.tasktitle}}</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeTask()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content >
-  <ion-checkbox ng-model="isChecked">Pin</ion-checkbox>
+  <ion-checkbox ng-model="checked" ng-check="checked" >Pin</ion-checkbox>
       <div class="item item-avatar">
     <img src="img/wor.png">
       <h2>Worakrit </h2>   
-      <h1 > {{modal.task.state}}</h1>
+      <div class="button-bar">
+        <a class="button button-outline button-royal" ng-click="setState('Todo')"  ng-class="{'active':taskModal.state=='Todo'}">Todo</a>
+        <a class="button button-outline button-calm" ng-click="setState('Doing')" ng-class="{'active':taskModal.state=='Doing'}">Doing</a>
+        <a class="button button-outline button-balanced" ng-click="setState('Done')" ng-class="{'active':taskModal.state=='Done'}">Done</a>
+      </div>
   </div>
 
   <div class="item item-body">
     <p>
-      <p><span style="color:blue"> Estimate </span>: {{modal.task.estimate}} Days </p>
-      <p><span style="color:blue"> Sprint </span>: Sprint 1 </p>
+      <p><span style="color:blue"> Estimate </span>: {{taskModal.estimate}} Days </p>
+      <p><span style="color:blue"> Sprint </span>: {{taskModal.sprint}}</p>
       <p><span style="color:blue"> TEAM </span> : Team 1 </p>
     </p>
     <p>
